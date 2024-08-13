@@ -1,81 +1,91 @@
+const { GoatWrapper } = require('fca-liane-utils');
 const axios = require('axios');
 
-const Prefixes = [
-  'gpt',
-  'ai',
-  'what',
-  'Zeph',
-  'give',
-  'zep',
-];
+// Define the fonts mapping
+const fonts = {
+    a: "𝖺", b: "𝖻", c: "𝖼", d: "𝖽", e: "𝖾", f: "𝖿", g: "𝗀", h: "𝗁", i: "𝗂",
 
+				j: "𝗃", k: "𝗄", l: "𝗅", m: "𝗆", n: "𝗇", o: "𝗈", p: "𝗉", q: "𝗊", r: "𝗋",
+
+				s: "𝗌", t: "𝗍", u: "𝗎", v: "𝗏", w: "𝗐", x: "𝗑", y: "𝗒", z: "𝗓",
+
+				A: "𝖠", B: "𝖡", C: "𝖢", D: "𝖣", E: "𝖤", F: "𝖥", G: "𝖦", H: "𝖧", I: "𝖨",
+
+				J: "𝖩", K: "𝖪", L: "𝖫", M: "𝖬", N: "𝖭", O: "𝖮", P: "𝖯", Q: "𝖰", R: "𝖱",
+
+				S: "𝖲", T: "𝖳", U: "𝖴", V: "𝖵", W: "𝖶", X: "𝖷", Y: "𝖸", Z: "𝖹",
+
+				" ": " "
+
+		};
+
+async function fetchFromAI(url, params) {
+    try {
+        const response = await axios.get(url, { params });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+async function getAIResponse(input, userId, messageID) {
+ const services = [
+ { url: 'https://ai-tools.replit.app/gpt', params: { prompt: input, uid: userId } },
+ { url: 'https://openaikey-x20f.onrender.com/api', params: { prompt: input } },
+ { url: 'http://fi1.bot-hosting.net:6518/gpt', params: { query: input } },
+ { url: 'https://ai-chat-gpt-4-lite.onrender.com/api/hercai', params: { question: input } }
+ ];
+
+ let response = "𝗛𝗶 𝗶'𝗺 𝗞𝘆𝗹𝗲'𝘀 𝗯𝗼𝘁, 𝗵𝗼𝘄 𝗰𝗮𝗻 𝗶 𝗵𝗲𝗹𝗽 𝘆𝗼𝘂 𝘁𝗼𝗱𝗮𝘆?";
+    let currentIndex = 0;
+
+    for (let i = 0; i < services.length; i++) {
+        const service = services[currentIndex];
+        const data = await fetchFromAI(service.url, service.params);
+        if (data && (data.gpt4 || data.reply || data.response)) {
+            response = data.gpt4 || data.reply || data.response;
+            break;
+        }
+        currentIndex = (currentIndex + 1) % services.length; // Move to the next service in the cycle
+    }
+
+    // Convert response to special fonts
+    const convertedResponse = Array.from(response)
+        .map(char => fonts[char] || char) // Use special font or original character if not in fonts
+        .join('');
+
+    return { response: convertedResponse, messageID };
+}
 module.exports = {
-  config: {
-    name: 'ai',
-    version: '2.5.4',
-    author: 'Kylepogi',//credits owner of this api
-    role: 0,
-    category: 'ai',
-    shortDescription: {
-      en: 'Asks an AI for an answer.',
-    },
-    longDescription: {
-      en: 'Asks an AI for an answer based on the user prompt.',
-    },
-    guide: {
-      en: '{pn} [prompt]',
-    },
-  },
+ config: {
+ name: 'ai',
+ author: 'Arn',
+ role: 0,
+ category: 'nigga ai',
+ shortDescription: 'ai to ask anything',
+ },
+ onStart: async function ({ api, event, args }) {
+ const input = args.join(' ').trim();
+ if (!input) {
+ api.sendMessage(` `, event.threadID, event.messageID);
+ return;
+ }
 
-  langs: {
-    en: {
-      final: "𓃵 | 𝗭𝗘𝗣𝗛 𝗚𝗣𝗧𝗩𝟮",
-      loading: "⏱️𝘄𝗮𝗶𝘁 𝗳𝗼𝗿 𝘁𝗵𝗲 𝗮𝗻𝘀𝘄𝗲𝗿... "
+ const { response, messageID } = await getAIResponse(input, event.senderID, event.messageID);
+ api.sendMessage(` `, event.threadID, messageID);
+ },
+ onChat: async function ({ event, message }) {
+        const messageContent = event.body.trim().toLowerCase();
+        if (messageContent.startsWith("ai")) {
+            const input = messageContent.replace(/^ai\s*/, "").trim();
+            const { response, messageID } = await getAIResponse(input, event.senderID, message.messageID);
+            // Construct message with special fonts
+ 
+const formattedResponse = `╭┈◈[𓃵]𝗭𝗘𝗣𝗛 𝗚𝗣𝗧𝟰 👨🏻‍🏫 \n┆\n╰┈◈➤${response}`;
+            message.reply(formattedResponse, messageID);
+        }
     }
-  },
-
-  onStart: async function () {},
-
-  onChat: async function ({ api, event, args, getLang, message }) {
-    try {
-      const prefix = Prefixes.find((p) => event.body && event.body.toLowerCase().startsWith(p));
-
-      if (!prefix) {
-        return;
-      }
-
-      const prompt = event.body.substring(prefix.length).trim();
-
-      if (prompt === '') {
-
-        await message.reply(
-          "💁🏻‍♂️ provide your question..."
-        );
-        
-        return;
-      }
-
-      const loadingMessage = getLang("loading");
-      const loadingReply = await message.reply(loadingMessage);
-      const url = "https://hercai.onrender.com/v3/hercai"; // Replace with the new API endpoint
-      const response = await axios.get(`${url}?question=${encodeURIComponent(prompt)}`);
-
-      if (response.status !== 200 || !response.data) {
-        throw new Error('Invalid or missing response from API');
-      }
-
-      const messageText = response.data.reply.trim(); // Adjust according to the response structure of the new API
-      const userName = getLang("final");
-      const finalMsg = `${userName}\n\n👨🏻‍🏫𝗔𝗻𝘀𝘄𝗲𝗿:  ${messageText}\n`;
-     api.editMessage(finalMsg, loadingReply.messageID); 
-
-      console.log('Sent answer as a reply to user');
-    } catch (error) {
-      console.error(`Failed to get answer: ${error.message}`);
-      api.sendMessage(
-        `${error.message}.\n\nYou can try typing your question again or resending it, as there might be a bug from the server that's causing the problem. It might resolve the issue.`,
-        event.threadID
-      );
-    }
-  },
 };
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: false });
