@@ -9,7 +9,7 @@ module.exports.config = {
   author: "Kylepogi", // lol don't change the author if you change it i will hack your Facebook account👿
   description: "",
   category: "Autobibleverse",
-  countDown: 3
+  countDown: 50
 };
 
 module.exports.onLoad = async ({ api, getLang, utils }) => {
@@ -19,7 +19,7 @@ module.exports.onLoad = async ({ api, getLang, utils }) => {
 
       if (response.status === 200 && response.data.length > 0) {
         const verse = response.data[0];
-        return `🔔 RANDOM BIBLEVERSE:\n[ᴱᵛᵉʳʸ ⁴ ᵐᶦⁿᵘᵗᵉˢ]\n\n${verse.bookname} ${verse.chapter}:${verse.verse} - ${verse.text}`;
+        return `╭┈[🔔]◈𝚁𝙰𝙽𝙳𝙾𝙼 𝙱𝙸𝙱𝙻𝙴𝚅𝙴𝚁𝚂𝙴:\n\n╰┈◈➣ ${verse.bookname} ${verse.chapter}:${verse.verse} - ${verse.text}`;
       } else {
         return "Sorry, an error occurred while getting the Bible verse.";
       }
@@ -28,7 +28,7 @@ module.exports.onLoad = async ({ api, getLang, utils }) => {
     }
   };
 
-  cron.schedule('0 */4 * * * *', async function() { // Fixed syntax error here
+  cron.schedule('0 */5 * * * *', async function() { // Fixed syntax error here
     const now = moment().tz('Asia/Manila');
     const currentTime = now.format('HH:mm:ss'); // 24-hour format for consistency
 
