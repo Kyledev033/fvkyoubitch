@@ -17,7 +17,7 @@ module.exports.onLoad = async ({ api, getLang, utils }) => {
     try {
       const response = await axios.get("https://labs.bible.org/api/?passage=random&type=json");
 
-      if (response.status === 300 && response.data.length > 0) {
+      if (response.status === 200 && response.data.length > 0) {
         const verse = response.data[0];
         return `🔔 𝚁𝙰𝙽𝙳𝙾𝙼 𝙱𝙸𝙱𝙻𝙴𝚅𝙴𝚁𝚂𝙴:\n\n${verse.bookname} ${verse.chapter}:${verse.verse} - ${verse.text}`;
       } else {
