@@ -82,7 +82,7 @@ module.exports = {
             const { response, messageID } = await getAIResponse(input, event.senderID, message.messageID);
             // Construct message with special fonts
  
-const formattedResponse = `╭┈◈[𓃵]𝗭𝗘𝗣𝗛 𝗚𝗣𝗧𝟰 👨🏻‍🏫 \n┆\n╰┈◈➤${response}`;
+const formattedResponse = `𝗭𝗘𝗣𝗛 𝗚𝗣𝗧𝟰 👨🏻‍🏫 \n▬▬▬▬▬▬▬▬▬▬▬▬\n${response}`;
             message.reply(formattedResponse, messageID);
         }
     }
