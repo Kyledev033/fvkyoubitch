@@ -41,7 +41,7 @@ module.exports = {
 
       const { name: senderName } = await usersData.get(senderID);
       const msg = {
-        body: `🚨 𝗨𝗡𝗦𝗘𝗡𝗗 𝗗𝗘𝗧𝗘𝗖𝗧𝗘𝗗.\n\nlol wala kang takas ${senderName} unsend this: ${getMsg.attachments.length} attachments ${getMsg.msgBody !== "" ? `unsend this message: ${getMsg.msgBody}` : ""}`,
+        body: `🚨 𝗨𝗡𝗦𝗘𝗡𝗗 𝗗𝗘𝗧𝗘𝗖𝗧𝗘𝗗.\nunsend this: ${getMsg.attachments.length} attachments ${getMsg.msgBody !== "" ? `unsend this message: ${getMsg.msgBody}` : ""} sender By:${senderName} `,
     attachment: [],
         mentions: { tag: senderName, id: senderID },
       };
