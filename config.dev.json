@@ -22,7 +22,7 @@
     "whiteListIds": ["",""],
     "notes": "if you enable this feature, only the ids in the whiteListIds section can use the bot"
   },
-  "nickNameBot": " [ . ] ☯➢ •𝗭𝗘𝗣𝗛𝗩𝟮",
+  "nickNameBot": " [ . ] ☯➢ •𝗭𝗘𝗣𝗛𝗩𝟮 ⧽⧽「 𝗈𝗐𝗇𝖾𝗋:𝗞𝗬𝗟𝗘敦. ဗီူ 」⧼⧼",
   "prefix": ".",
   "database": {
     "type": "sqlite",
