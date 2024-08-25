@@ -10,7 +10,7 @@ module.exports = {
     config: {
         name: "help",
         version: "1.18",
-        author: "NTKhang x Kyle x Symer(MRKIMSTER)",
+        author: "NTKhang x Symer(MRKIMSTER)",
         countDown: 5,
         role: 0,
         shortDescription: {
@@ -96,7 +96,7 @@ module.exports = {
 
             const returnArray = allPage[page - 1] || [];
             const startNumber = (page - 1) * numberOfOnePage + 1;
-            msg += (returnArray || []).reduce((text, item, index) => text += `『 ${index + startNumber} 』 =${item.data}\n`, '').slice(0, -1);
+            msg += (returnArray || []).reduce((text, item, index) => text += `『 ${index + startNumber} 』 .${item.data}\n`, '').slice(0, -1);
             await message.reply(getLang("help", msg, page, totalPage, commands.size, prefix, doNotDelete));
         }
         // ———————————— COMMAND DOES NOT EXIST ———————————— //
