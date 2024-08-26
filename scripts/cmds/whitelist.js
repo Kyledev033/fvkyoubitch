@@ -36,7 +36,7 @@ module.exports = {
     const permission = ["100052395031835"];
     if (!permission.includes(event.senderID)) {
       api.sendMessage(
-        "You don't have enough permission to use this command. Only My Boss Kyle Bait-it can do it.",
+        "You don't have enough permission to use this command. Only My Boss Kyle can do it.",
         event.threadID,
         event.messageID
       );
