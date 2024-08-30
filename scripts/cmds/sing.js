@@ -5,7 +5,7 @@ const path = require('path');
 const { getStreamFromURL, shortenURL, randomString } = global.utils;
 
 async function video(api, event, args, message) {
-    api.setMessageReaction(" ", event.messageID, (err) => {}, true);
+    api.setMessageReaction("⏱️", event.messageID, (err) => {}, true);
     try {
         let title = '';
         let shortUrl = '';
