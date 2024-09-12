@@ -29,10 +29,10 @@ module.exports = {
         const ownerInfo = {
           name: 'Kyle敦. ဗီူ',
           gender: '𝖡𝗈𝗒', 
-          talent: 'mabilis mag ,magaling hinala, mabilis mag selos, mabilis kumaldagv2, bounce kana', 
+          talent: 'Seloso,magaling 𝗆𝖺𝗀 hinala, mabilis kumaldagv2, bounce kana 𝗉𝖺𝗋 𝖧𝖠𝖧𝖠𝖧𝖠', 
           sports: 'Soccer, sepak takraw, taekwondo, karate, kick boxing, boxing, etc', 
           hobby: '𝗉𝗅𝖺𝗒𝗂𝗇𝗀 𝗀𝖺𝗆𝖾𝗌, 𝖾𝗍𝖼.',
-          relationship: '𝗳𝘃𝗸 𝗹𝗼𝘃𝗲',
+          relationship: 'check my info',
           facebookLink: 'https://www.facebook.com/kyledev03',
           bio: '𝗳𝘃𝗸 𝗹𝗶𝗳𝗲/𝗮𝘁𝘁𝗶𝘁𝘂𝗱𝗲.'
         };
