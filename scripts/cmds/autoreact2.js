@@ -4,7 +4,7 @@ module.exports = {
     name: 'autoreact2',
     author: '@',
     countDown: 5,
-    role: 2,
+    role: 0,
     category: 'owner',
     shortDescription: { en: "Reacts to emoji with same emoji!" }
   },
