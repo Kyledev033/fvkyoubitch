@@ -34,7 +34,7 @@ module.exports = {
 
     langs: {
         en: {
-            help: "✨ Commands List\n\n%1\n\n» Page: %2/%3\n» Use =help [page number] to display the information on the additional pages.",
+            help: "┏━━━━━━━━━━━┓\n𓃵 𝗭𝗲𝗽𝗵𝘆𝗿𝘂𝘀 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀 𝗟𝗶𝘀𝘁\n┗━━━━━━━━━━━┛\n╭──────────────❃\n〡\n〡%1\n╰──────────────𖤓\n⧽⧽ 𝗣𝗮𝗴𝗲: %2/%3\n╰╾⪼ ℹ️Use .𝗵𝗲𝗹𝗽 [page number] to display the information on the additional pages.\n╭─────────◈\n│\n│   Copyright © 2024-2025\n│          kylepogiDev. \n│All rights reserved. Do not sell \n│this bot or pretend to be the \n│owner or admin. The owner \n│works alone and any \n│unauthorized distribution or │misrepresentation is prohibited.\n╰───────────❃",
             commandNotFound: "Command \"%1\" does not exist",
             getInfoCommand: "『 %1 』\nView the details of the commands.\n\n   •  Version: %2\n   •  Category: %3\n   •  Cooldown: %4\n   •  Permission: %5\n   •  Creator: %6\n\nUsage:\n   •  %7",
             onlyInfo: "『 Info 』\nCommand name: %1\nDescription: %2\nOther names: %3\nOther names in your group: %4\nVersion: %5\nRole: %6\nTime per command: %7s\nAuthor: %8",
