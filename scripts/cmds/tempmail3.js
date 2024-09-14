@@ -59,7 +59,7 @@ module.exports = {
           } catch (error) {
             console.error("❌ | Secondary API failed for fetching inbox messages", error);
             try {
-              const inboxResponse = await axios.get(`https://t-mail.vercel.app/api/inbox?email=${email}`);
+              const inboxResponse = await axios.get(`https://kaizenji-rest-api.onrender.com/tempmail/inbox?email=${email}`);
               inboxMessages = inboxResponse.data;
             } catch (error) {
               console.error("❌ | Tertiary API failed for fetching inbox messages", error);
