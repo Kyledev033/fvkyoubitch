@@ -14,7 +14,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1761168418.779004,
+        "expirationDate": 1761184228.798561,
         "hostOnly": false,
         "httpOnly": true,
         "name": "datr",
@@ -40,7 +40,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1731792686,
+        "expirationDate": 1731808478,
         "hostOnly": false,
         "httpOnly": false,
         "name": "vpd",
@@ -66,7 +66,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1758144686,
+        "expirationDate": 1758160478,
         "hostOnly": false,
         "httpOnly": false,
         "name": "fbl_st",
@@ -75,7 +75,7 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "100430569%3BT%3A28776811"
+        "value": "100632118%3BT%3A28777074"
     },
     {
         "domain": ".facebook.com",
@@ -117,6 +117,19 @@
     },
     {
         "domain": ".facebook.com",
+        "expirationDate": 1734400220.725073,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "m_page_voice",
+        "path": "/",
+        "sameSite": "lax",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "61553689905717"
+    },
+    {
+        "domain": ".facebook.com",
         "expirationDate": 1761036397.885183,
         "hostOnly": false,
         "httpOnly": true,
@@ -143,7 +156,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1727213347,
+        "expirationDate": 1727229026,
         "hostOnly": false,
         "httpOnly": false,
         "name": "wd",
@@ -156,7 +169,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1734384695,
+        "expirationDate": 1734400481,
         "hostOnly": false,
         "httpOnly": false,
         "name": "wl_cbv",
@@ -165,6 +178,6 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "v2%3Bclient_version%3A2623%3Btimestamp%3A1726608675"
+        "value": "v2%3Bclient_version%3A2623%3Btimestamp%3A1726624478"
     }
 ]
