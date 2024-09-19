@@ -9,6 +9,8 @@ const services = [
     { url: 'http://markdevs-last-api.onrender.com/api/v2/gpt4', param: 'query' },
     { url: 'https://markdevs-last-api.onrender.com/api/v3/gpt4', param: 'ask' },
     { url: 'https://markdevs-last-api.onrender.com/gpt4', param: 'prompt', uid: 'uid' }
+    { url: 'https://gemini-ai-pearl-two.vercel.app/kshitiz?prompt=${encodeURIComponent(c)}&uid=${d}&apikey=kshitiz' }
+    { url: 'https://sandipbaruwal.onrender.com/gemini2?prompt=${encodeURIComponent(prompt)}&url=${encodeURIComponent(photoUrl)}}
 ];
 
 const designatedHeader = "Izumi 𝙰𝚒";
