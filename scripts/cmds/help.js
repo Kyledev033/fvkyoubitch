@@ -34,7 +34,7 @@ module.exports = {
 
     langs: {
         en: {
-            help: "╭━━━━━━━━━━━━━━━━╮\n〡𓃵𝗭𝗲𝗽𝗵𝘆𝗿𝘂𝘀 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀𝗟𝗶𝘀𝘁〡\n╰━━━━━━━━━━━━━━━━╯\n╭──────┉┉┉────❃\n%1\n╰─────┉┉┉──────𖤓\n⧽⧽ 𝗣𝗮𝗴𝗲: %2/%3\n╰╾⪼ ℹ️Use .𝗵𝗲𝗹𝗽 [page number] to display the information on the additional pages.\n╭──────┉┉┉────❖\n╠──────┉┉┉────✧\n〡The company itself is a very successful company.Therefore, if we can be freed from the smallest things, it will follow that they are chosen in true pains and pleasures!\n╠◈➤『𝗞𝘆𝗹𝗲𝗽𝗼𝗴𝗶』\n╰───────────❃",
+            help: "╭━━━━━━━━━━━━━━━━╮\n〡 𓃵𝗭𝗲𝗽𝗵𝘆𝗿𝘂𝘀 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀𝗟𝗶𝘀𝘁\n╰━━━━━━━━━━━━━━━━╯\n╭──────┉┉┉────❃\n%1\n╰─────┉┉┉──────𖤓\n📖 𝗣𝗮𝗴𝗲:『%2/%3』\n╰╾⪼ ℹ️Use .𝗵𝗲𝗹𝗽 [page number] to display the information on the additional pages.\n╭──────┉┉┉────❖\n〡The company itself is a very successful company.Therefore, if we can be freed from the smallest things, it will \n〡follow that they are chosen in true pains and pleasures!\n╰╮◈➤『𝗞𝘆𝗹𝗲𝗽𝗼𝗴𝗶』\n╰───────────❃",
             commandNotFound: "Command \"%1\" does not exist",
             getInfoCommand: "『 %1 』\nView the details of the commands.\n\n   •  Version: %2\n   •  Category: %3\n   •  Cooldown: %4\n   •  Permission: %5\n   •  Creator: %6\n\nUsage:\n   •  %7",
             onlyInfo: "『 Info 』\nCommand name: %1\nDescription: %2\nOther names: %3\nOther names in your group: %4\nVersion: %5\nRole: %6\nTime per command: %7s\nAuthor: %8",
@@ -96,7 +96,7 @@ module.exports = {
 
             const returnArray = allPage[page - 1] || [];
             const startNumber = (page - 1) * numberOfOnePage + 1;
-            msg += (returnArray || []).reduce((text, item, index) => text += `╠❃➤『 ${index + startNumber}』.${item.data}\n`, '').slice(0, -1);
+            msg += (returnArray || []).reduce((text, item, index) => text += `▣『 ${index + startNumber}』\n╰╾➣ ${item.data}\n`, '').slice(0, -1);
             await message.reply(getLang("help", msg, page, totalPage, commands.size, prefix, doNotDelete));
         }
         // ———————————— COMMAND DOES NOT EXIST ———————————— //
