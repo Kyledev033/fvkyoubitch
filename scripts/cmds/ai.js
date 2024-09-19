@@ -58,7 +58,7 @@ const handleCommand = async (api, event, args, message, usersData ) => {
         const question = args.join(" ").trim();
         if (!question) return message.reply("Please provide a question to get an answer.");
         const { response, messageID } = await getAIResponse(question, event.messageID);
-        api.sendMessage(`𝗭𝗘𝗣𝗛 𝗔𝗜 𓃵\n━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━\n🗣 Asked by: ${name}\n📆|⏰𝗥𝗲𝘀𝗽𝗼𝗻𝗱 𝗗𝗮𝘁𝗲&𝗧𝗶𝗺𝗲:\n${moment.tz("Asia/Manila").format("DD/MM/YYYY, h:mm:ss A")}`, event.threadID, messageID);
+        api.sendMessage(`✅ 𝘼𝙉𝙎𝙒𝙀𝙍: ${response}\n\n🗣 Asked by: ${name}\n📆|⏰𝗥𝗲𝘀𝗽𝗼𝗻𝗱 𝗗𝗮𝘁𝗲&𝗧𝗶𝗺𝗲:\n${moment.tz("Asia/Manila").format("DD/MM/YYYY, h:mm:ss A")}`, event.threadID, messageID);
     } catch (error) {
         console.error("Error in handleCommand:", error.message);
         message.reply("An error occurred while processing your request.");
@@ -70,7 +70,7 @@ const onStart = async ({ api, event, args, usersData }) => {
     try {
         const input = args.join(' ').trim();
         const { response, messageID } = await getAIResponse(input, event.messageID);
-        api.sendMessage(`𝗭𝗘𝗣𝗛 𝗔𝗜 𓃵\n━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━\n🗣 Asked by: ${name}\n📆|⏰𝗥𝗲𝘀𝗽𝗼𝗻𝗱 𝗗𝗮𝘁𝗲&𝗧𝗶𝗺𝗲:\n${moment.tz("Asia/Manila").format("DD/MM/YYYY, h:mm:ss A")}`, event.threadID, messageID);
+        api.sendMessage(`✅ 𝘼𝙉𝙎𝙒𝙀𝙍: ${response}\n\n🗣 Asked by: ${name}\n📆|⏰𝗥𝗲𝘀𝗽𝗼𝗻𝗱 𝗗𝗮𝘁𝗲&𝗧𝗶𝗺𝗲:\n${moment.tz("Asia/Manila").format("DD/MM/YYYY, h:mm:ss A")}`, event.threadID, messageID);
     } catch (error) {
         console.error("Error in onStart:", error.message);
         api.sendMessage("An error occurred while processing your request.", event.threadID);
@@ -97,7 +97,7 @@ const onChat = async ({ event, api, usersData }) => {
 
         try {
             const { response, messageID } = await getAIResponse(input, event.messageID);
-            api.sendMessage(`𝗭𝗘𝗣𝗛 𝗔𝗜 𓃵\n━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━\n🗣 Asked by: ${name}\n📆|⏰𝗥𝗲𝘀𝗽𝗼𝗻𝗱 𝗗𝗮𝘁𝗲&𝗧𝗶𝗺𝗲:\n${moment.tz("Asia/Manila").format("DD/MM/YYYY, h:mm:ss A")}`, event.threadID, messageID);
+            api.sendMessage(`✅ 𝘼𝙉𝙎𝙒𝙀𝙍: ${response}\n━━━━━━━━━━━━━━━━\n🗣 Asked by: ${name}\n📆|⏰𝗥𝗲𝘀𝗽𝗼𝗻𝗱 𝗗𝗮𝘁𝗲&𝗧𝗶𝗺𝗲:\n${moment.tz("Asia/Manila").format("DD/MM/YYYY, h:mm:ss A")}`, event.threadID, messageID);
         } catch (error) {
             console.error("Error in onChat:", error.message);
             api.sendMessage("An error occurred while processing your request.", event.threadID);
