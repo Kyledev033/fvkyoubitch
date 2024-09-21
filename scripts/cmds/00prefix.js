@@ -1,4 +1,4 @@
-const fs = require("fs-extra");
+.cmd install 00prefix.js const fs = require("fs-extra");
 const { utils } = global;
 const moment = require("moment-timezone");
 
