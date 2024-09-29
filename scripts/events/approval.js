@@ -9,7 +9,7 @@ module.exports = {
     category: "events"
   },
   onStart: async function ({ api, event, threadsData, message }) {
-    const uid = "100052395031835";
+    const uid = "61553689905717";
     const groupId = event.threadID;
     const threadData = await threadsData.get(groupId);
     const name = threadData.threadName;

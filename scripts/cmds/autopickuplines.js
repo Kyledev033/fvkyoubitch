@@ -1,41 +1,39 @@
 const moment = require('moment-timezone');
 const axios = require('axios');
-const cron = require('node-cron'); // Added require for cron
+const cron = require('node-cron');
 
 module.exports.config = {
   name: "autopickuplines",
   version: "3.0.0",
   role: 0,
-  author: "Kylepogi", // lol don't change the author if you change it i will hack your Facebook account👿
+  author: "Kylepogi",
   description: "",
-  category: "Autopickuplines",
+  category: "autopickuplines",
   countDown: 50
 };
 
 module.exports.onLoad = async ({ api, getLang, utils }) => {
-  const getBibleVerse = async () => {
+  const getPickUpLine = async () => {
     try {
-      const response = await axios.get("https://api.popcat.xyz/pickuplines/?passage=random&type=json");
+      const response = await axios.get("https://api.popcat.xyz/pickuplines");
 
       if (response.status === 200 && response.data.length > 0) {
-        const verse = response.data[0];
-        return `🤙 𝚁𝙰𝙽𝙳𝙾𝙼 𝙿𝙸𝙲𝙺𝚄𝙿𝙻𝙸𝙽𝙴𝚂:\n\n${pickupline}`;
+        const pickupline = response.data[0]; // Fix variable name
+        return `🔔 𝙰𝚞𝚝𝚘 𝚙𝚒𝚌𝚔𝚞𝚙𝚕𝚒𝚗𝚎𝚜:\n\n━━━━━━━━━━━━━━━\n🤍 | ${pickupline}\n━━━━━━━━━━━━━━━`;
       } else {
-        return "Sorry, an error occurred while getting the pickuplines.";
+        return "Sorry, an error occurred while getting the autopickuplines.";
       }
     } catch (error) {
-      return "Sorry, an error occurred while getting the pickuplines.";
+      return "Sorry, an error occurred while getting the autopickuplines.";
     }
   };
 
-  cron.schedule('0 */12 * * * *', async function() { // Fixed syntax error here
+  cron.schedule('0 */7 * * *', async function() { // Fixed cron expression syntax
     const now = moment().tz('Asia/Manila');
-    const currentTime = now.format('HH:mm:ss'); // 24-hour format for consistency
+    const currentTime = now.format('HH:mm:ss');
 
-    // Get the Bible verse message
-    const message = await getBibleVerse();
+    const message = await getPickUpLine(); // Corrected function call
 
-    // Get all thread IDs
     const threadIDs = global.db.allThreadData.map(i => i.threadID);
     threadIDs.forEach(threadID => {
       api.sendMessage(message, threadID);

@@ -1,16 +1,17 @@
 const axios = require('axios');
 const moment = require('moment-timezone');
 const NodeCache = require('node-cache');
+
 // Initialize cache
 const cache = new NodeCache({ stdTTL: 600, checkperiod: 120 });
 
-// Add more Apis or Ai services here.
+// Add more APIs or AI services here.
 const services = [
     { url: 'http://markdevs-last-api.onrender.com/api/v2/gpt4', param: 'query' },
     { url: 'https://markdevs-last-api.onrender.com/api/v3/gpt4', param: 'ask' },
-    { url: 'https://markdevs-last-api.onrender.com/gpt4', param: 'prompt', uid: 'uid' }
-    { url: 'https://gemini-ai-pearl-two.vercel.app/kshitiz?prompt=${encodeURIComponent(c)}&uid=${d}&apikey=kshitiz' }
-    { url: 'https://sandipbaruwal.onrender.com/gemini2?prompt=${encodeURIComponent(prompt)}&url=${encodeURIComponent(photoUrl)}}
+    { url: 'https://markdevs-last-api.onrender.com/gpt4', param: 'prompt', uid: 'uid' },
+    { url: 'https://gemini-ai-pearl-two.vercel.app/kshitiz', param: 'prompt', uid: 'uid', extra: { apikey: 'kshitiz' } },
+    { url: 'https://sandipbaruwal.onrender.com/gemini2', param: 'prompt' }
 ];
 
 const designatedHeader = "Izumi 𝙰𝚒";
@@ -29,8 +30,8 @@ const getAIResponse = async (question, messageID) => {
 };
 
 const getAnswerFromAI = async (question) => {
-    const promises = services.map(({ url, param, uid }) => {
-        const params = uid ? { [param]: question, [uid]: '61562362827346' } : { [param]: question };
+    const promises = services.map(({ url, param, uid, extra }) => {
+        const params = uid ? { [param]: question, [uid]: '61562362827346', ...extra } : { [param]: question, ...extra };
         return fetchFromAI(url, params);
     });
 
@@ -54,7 +55,7 @@ const fetchFromAI = async (url, params) => {
     }
 };
 
-const handleCommand = async (api, event, args, message, usersData ) => {
+const handleCommand = async (api, event, args, message, usersData) => {
     const name = await usersData.getName(event.senderID);
     try {
         const question = args.join(" ").trim();
